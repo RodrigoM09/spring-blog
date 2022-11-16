@@ -1,12 +1,10 @@
 package com.codeup.springblog.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/posts")
 public class PostController {
     @GetMapping("/posts")
     @ResponseBody
@@ -16,7 +14,7 @@ public class PostController {
     @GetMapping("/posts/{id}")
     @ResponseBody
     public String postsIdController(@PathVariable int id){
-        return "view an individual post";
+        return "view an individual post" + id;
     }
     @GetMapping("/posts/create")
     @ResponseBody
