@@ -5,7 +5,7 @@
     <title>roll-dice</title>
 </head>
 <body>
-    <h1>Roll your dice:</h1>
+    <h1>What Number do you think the dice will land on:</h1>
         <ul>
             <li><a href="/roll-dice/1">1</a></li>
             <li><a href="/roll-dice/2">2</a></li>
@@ -14,8 +14,9 @@
             <li><a href="/roll-dice/5">5</a></li>
             <li><a href="/roll-dice/6">6</a></li>
         </ul>
-    <div th:if="${random}">
-        <span th:text="${number}"></span>
+    <div>
+        <p>You chose: <span th:text="${num}"></span></p>
+        <p>Your number is: <span th:text="${random}"></span></p>
     </div>
 
 </body>

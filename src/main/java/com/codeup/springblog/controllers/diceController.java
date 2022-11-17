@@ -17,10 +17,9 @@ public class diceController {
     }
 
     @GetMapping("/{num}")
-    @ResponseBody
     public String diceRoll(@PathVariable int num, Model model){
         model.addAttribute("number",model);
         model.addAttribute("random", Math.floor(Math.random() * 6) + 1);
-       return "Roll dice";
+       return "roll-dice";
     }
 }
