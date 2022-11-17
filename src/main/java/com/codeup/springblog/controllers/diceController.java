@@ -11,14 +11,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/roll-dice")
 public class diceController {
 
+    @GetMapping
+    public String rollDice(){
+        return "roll-dice";
+    }
+
     @GetMapping("/{num}")
     @ResponseBody
-    public String diceRollOne(@PathVariable int num, Model model){
+    public String diceRoll(@PathVariable int num, Model model){
         model.addAttribute("number",model);
-        if(Math.floor(Math.random() * 6) + 1 == num)
-        return "You guessed right!";
-        else {
-          return "Wrong!";
-        }
+        model.addAttribute("random", Math.floor(Math.random() * 6) + 1);
+       return "Roll dice";
     }
 }

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>roll-dice</title>
 </head>
 <body>
     <h1>Roll your dice:</h1>
@@ -14,5 +14,9 @@
             <li><a href="/roll-dice/5">5</a></li>
             <li><a href="/roll-dice/6">6</a></li>
         </ul>
+    <div th:if="${random}">
+        <span th:text="${number}"></span>
+    </div>
+
 </body>
 </html>
