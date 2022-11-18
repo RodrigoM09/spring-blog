@@ -1,0 +1,9 @@
+/*#blogPost{*/
+/*    height: 100px;*/
+/*}*/
+#postButton{
+    display: block;
+}
+.inputs{
+    display: flex;
+}
