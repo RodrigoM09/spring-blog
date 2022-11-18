@@ -16,10 +16,12 @@ public class diceController {
         return "roll-dice";
     }
 
-    @GetMapping("/{num}")
-    public String diceRoll(@PathVariable int num, Model model){
-        model.addAttribute("number",model);
-        model.addAttribute("random", Math.floor(Math.random() * 6) + 1);
+    @GetMapping("/{guess}")
+    public String diceRoll(@PathVariable String guess, Model model){
+        //This casts the random number to an int to get rid of the decimal------------>
+        int randomNum = (int) (Math.floor(Math.random() * 6) + 1);
+        model.addAttribute("randomNumber",randomNum);
+        model.addAttribute("guess", guess) ;
        return "roll-dice";
     }
 }

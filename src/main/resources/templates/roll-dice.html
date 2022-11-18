@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>roll-dice</title>
-</head>
+<head th:replace="partials/partials.html :: head ('Roll-Dice')"></head>
 <body>
+<nav th:replace="partials/partials.html :: bootstrap-nav"></nav>
     <h1>What Number do you think the dice will land on:</h1>
         <ul>
             <li><a href="/roll-dice/1">1</a></li>
@@ -15,8 +13,8 @@
             <li><a href="/roll-dice/6">6</a></li>
         </ul>
     <div>
-        <p>You chose: <span th:text="${num}"></span></p>
-        <p>Your number is: <span th:text="${random}"></span></p>
+        <p>You chose: <span th:text="${guess}"></span></p>
+        <p>Your number is: <span th:text="${randomNumber}"></span></p>
     </div>
 
 </body>
