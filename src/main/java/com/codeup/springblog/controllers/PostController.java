@@ -6,11 +6,12 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/posts")
 public class PostController {
-    @GetMapping("/posts")
-    @ResponseBody
+
+    @GetMapping
     public String postsController(){
-        return "posts index page";
+        return "/posts";
     }
+
     @GetMapping("/posts/{id}")
     @ResponseBody
     public String postsIdController(@PathVariable int id){

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<div th:replace="partials/header :: myheader"></div>
+</head>
+<body>
+<div th:insert="partials/Navigation :: mynav"></div>
+<div class="container">
+    <div>Welcome, ${name}!</div><br>
+    <hr>
+    <h1>Your Blogs:</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Description</th>
+            <th>Post Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <div items="${blogs}" var="blog">
+            <tr>
+                <td>${blog.description}</td>
+                <td>${blog.postDate}</td>
+                <td><a href="update-todo?id=${blog.id}" class="btn btn-success">Update</a></td>
+                <td><a href="delete-todo?id=${blog}.id}" class="btn btn-warning">DELETE</a></td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+    <a href="add-blog" class="btn btn-success">Add Blog</a>
+</div>
+<div th:insert="partials/Footer :: foot"></div>
+</body>
+</html>
