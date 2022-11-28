@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <div th:replace="partials/header :: myheader"></div>
+    <div th:replace="partials/posts-partials.html :: myheader"></div>
 </head>
 <body>
-    <div th:insert="partials/Navigation :: mynav"></div>
+    <nav th:replace="partials/posts-partials.html :: mynav"></nav>
 <h1>Your feed:</h1>
 <ul th:each="post : ${allPosts}">
     <li>
@@ -12,6 +12,6 @@
         <p th:text="${post.body}"></p>
     </li>
 </ul>
-    <div th:insert="partials/Footer :: foot"></div>
+    <div th:replace="partials/posts-partials.html :: foot"></div>
 </body>
 </html>

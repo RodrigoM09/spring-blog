@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Create</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <div th:replace="partials/posts-partials.html :: myheader"></div>
 </head>
 <body>
-        <div th:if="post" class="inputs">
-            <form action="/posts/create" method="post">
-                <label for="title">Post Title:</label>
-                <input type="text" name="title" id="title"><br>
-                <label for="body">Post Body:</label>
-                <textarea type="text" name="body" id="body"></textarea>
-                <button type="submit" id="postButton">Submit Post</button>
-            </form>
-        </div>
+        <nav th:replace="partials/posts-partials.html :: mynav"></nav>
+<!--        <div th:if="post" class="inputs">-->
+<!--            <form action="/posts/create" method="post">-->
+<!--                <label for="title">Post Title:</label>-->
+<!--                <input type="text" name="title" id="title"><br>-->
+<!--                <label for="body">Post Body:</label>-->
+<!--                <textarea type="text" name="body" id="body"></textarea>-->
+<!--                <button type="submit" id="postButton">Submit Post</button>-->
+<!--            </form>-->
+<!--        </div>-->
+        <div th:replace="partials/posts-partials.html :: foot"></div>
 </body>
 </html>
