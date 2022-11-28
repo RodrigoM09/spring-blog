@@ -1,4 +1,6 @@
 package com.codeup.springblog.models;
+import org.apache.catalina.User;
+
 import javax.persistence.*;
 
 @Entity
@@ -48,9 +50,10 @@ public class Post {
         this.body = body;
     }
 
-    public Post(String title, String body) {
+    public Post(String title, String body, users user) {
         this.title = title;
         this.body = body;
+        this.user = user;
     }
 
     public Post(long id, String title, String body) {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <div th:replace="partials/posts-partials.html :: myheader"></div>
+    <div th:replace="partials/posts-partials.html :: myheader('Posts')"></div>
 </head>
 <body>
     <nav th:replace="partials/posts-partials.html :: mynav"></nav>
@@ -10,6 +10,7 @@
     <li>
         <h2 th:text="${post.title}"></h2>
         <p th:text="${post.body}"></p>
+<!--        <p th:text="${post.users.getUsername()}"></p>-->
     </li>
 </ul>
     <div th:replace="partials/posts-partials.html :: foot"></div>

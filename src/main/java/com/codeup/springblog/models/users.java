@@ -1,7 +1,5 @@
 package com.codeup.springblog.models;
 
-import com.codeup.springblog.repositories.UserRepository;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,7 +9,7 @@ public class users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String username;
     private String email;
     private String password;

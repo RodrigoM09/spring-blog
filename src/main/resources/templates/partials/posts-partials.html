@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-  <div th:fragment="myheader" th:remove="tag">
+  <div th:fragment="myheader(title)" th:remove="tag">
     <meta charset="UTF-8">
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}">
     <link th:href="@{/webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css}" rel="stylesheet" >
-    <title>Manage Your Blogs</title>
+    <title th:text="${title}"></title>
   </div>
 </head>
 <body>

@@ -1,13 +1,14 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
+import com.codeup.springblog.models.users;
 import com.codeup.springblog.repositories.PostRepositories;
 import com.codeup.springblog.repositories.UserRepository;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,13 +25,13 @@ public class PostController {
     }
 
 
-
     @GetMapping
     public String allPosts(Model model){
         List<Post> allPosts = postDao.findAll();
         model.addAttribute("allPosts", allPosts);
         return "/posts/index";
     }
+
 
     @GetMapping("/show")
     public String postsController(){
@@ -53,7 +54,8 @@ public class PostController {
 
     @PostMapping("/create")
     public String createNewController(@RequestParam(name="title") String title, @RequestParam(name="body") String body ){
-        Post post = new Post(title, body);
+        users user = userDao.findById(1L);
+        Post post = new Post(title, body, user);
         postDao.save(post);
         return "redirect:/posts";
     }
