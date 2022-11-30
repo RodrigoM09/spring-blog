@@ -46,7 +46,20 @@ public class Post {
         return body;
     }
 
+    public users getUser() {
+        return user;
+    }
+
+    public void setUser(users user) {
+        this.user = user;
+    }
+
     public void setBody(String body) {
+        this.body = body;
+    }
+
+    public Post(String title, String body) {
+        this.title = title;
         this.body = body;
     }
 

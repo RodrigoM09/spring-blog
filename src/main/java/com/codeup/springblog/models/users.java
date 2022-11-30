@@ -10,11 +10,14 @@ public class users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(nullable = false, length = 50, unique = true)
     private String username;
+    @Column(nullable = false, length = 60)
     private String email;
+    @Column(nullable = false)
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 
     public users(String username, String email, String password) {
@@ -23,8 +26,14 @@ public class users {
         this.password = password;
     }
 
-    public users() {
+    public users(long id, String username, String email, String password) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 
+    public users() {
     }
 
     public long getId() {
