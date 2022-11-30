@@ -31,4 +31,10 @@ public class SpringBlogUserDetails extends Users implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public SpringBlogUserDetails(){}
+
+    public SpringBlogUserDetails(long id, String username, String email, String password) {
+        super(id, username, email, password);
+    }
 }
