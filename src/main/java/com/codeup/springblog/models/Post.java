@@ -1,5 +1,4 @@
 package com.codeup.springblog.models;
-import org.apache.catalina.User;
 
 import javax.persistence.*;
 
@@ -19,7 +18,7 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name="users_id")
-    private users user;
+    private Users user;
 
     public Post(String title) {
         this.title = title;
@@ -46,11 +45,11 @@ public class Post {
         return body;
     }
 
-    public users getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(users user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 
@@ -63,7 +62,7 @@ public class Post {
         this.body = body;
     }
 
-    public Post(String title, String body, users user) {
+    public Post(String title, String body, Users user) {
         this.title = title;
         this.body = body;
         this.user = user;

@@ -1,7 +1,7 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
-import com.codeup.springblog.models.users;
+import com.codeup.springblog.models.Users;
 import com.codeup.springblog.repositories.PostRepositories;
 import com.codeup.springblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
@@ -54,7 +54,7 @@ public class PostController {
 
     @PostMapping("/create")
     public String createNewController(@ModelAttribute Post post ){
-        users user = userDao.findById(1L);
+        Users user = userDao.findById(1L);
         post.setUser(user);
         postDao.save(post);
         return "redirect:/posts";
@@ -81,7 +81,7 @@ public class PostController {
 
     @PostMapping("/{id}/edit")
     public String editPost(@ModelAttribute Post post){
-        users user = userDao.findById(1L);
+        Users user = userDao.findById(1L);
         post.setUser(user);
         postDao.save(post);
         return "redirect:/posts";
