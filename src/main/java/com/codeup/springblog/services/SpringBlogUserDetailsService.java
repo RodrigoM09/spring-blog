@@ -3,7 +3,6 @@ package com.codeup.springblog.services;
 import com.codeup.springblog.models.SpringBlogUserDetails;
 import com.codeup.springblog.models.Users;
 import com.codeup.springblog.repositories.UserRepository;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

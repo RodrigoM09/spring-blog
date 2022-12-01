@@ -4,6 +4,7 @@ import com.codeup.springblog.models.Post;
 import com.codeup.springblog.models.Users;
 import com.codeup.springblog.repositories.PostRepositories;
 import com.codeup.springblog.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,14 @@ public class PostController {
         return "/posts/index";
     }
 
+    @GetMapping("/myPosts")
+    public String myPosts(Model model){
+        Users user = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Post> myPosts = postDao.findAllByUser(user);
+        model.addAttribute("myPosts", myPosts);
+        return "/posts/myPosts";
+    }
+
 
     @GetMapping("/show")
     public String postsController(){
@@ -53,35 +62,48 @@ public class PostController {
 
 
     @PostMapping("/create")
-    public String createNewController(@ModelAttribute Post post ){
-        Users user = userDao.findById(1L);
+    public String createNewController(@ModelAttribute Post post){
+        Users user = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long userId = user.getId();
+        user = userDao.findById(userId);
         post.setUser(user);
         postDao.save(post);
         return "redirect:/posts";
     }
 
-    @GetMapping("/delete")
-    public String deleteController(){
-        return "/posts/delete";
-    }
-
-    @PostMapping("/delete")
-    public String deleteByTitle(@RequestParam(name="title") String title){
-        Post post = postDao.deleteByTitle(title);
-        postDao.delete(post);
-        return "redirect:/posts";
+    @GetMapping("/{id}/delete")
+    public String deleteByTitle(@PathVariable long id){
+        Users user = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Post post = postDao.findById(id);
+        // this is id from users table
+        long usersId = user.getId();
+        // this is users_id from posts table
+        long postUserId = post.getUser().getId();
+        if (usersId == postUserId ) {
+            postDao.delete(post);
+        }
+            return "redirect:/posts";
     }
 
     @GetMapping("/{id}/edit")
     public String editPostForm(@PathVariable long id, Model model){
+        Users user = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post post = postDao.findById(id);
         model.addAttribute("post", post);
-        return "/posts/edit";
+        // this is id from users table
+        long usersId = user.getId();
+        // this is users_id from posts table
+        long postUserId = post.getUser().getId();
+        if (usersId == postUserId ) {
+            return "/posts/edit";
+        }else {
+            return "redirect:/posts";
+        }
     }
 
     @PostMapping("/{id}/edit")
-    public String editPost(@ModelAttribute Post post){
-        Users user = userDao.findById(1L);
+    public String editPost(@ModelAttribute Post post, @RequestParam(name="id") long id){
+        Users user = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(user);
         postDao.save(post);
         return "redirect:/posts";

@@ -10,8 +10,12 @@
     <li>
         <h2 th:text="${post.title}"></h2>
         <p th:text="${post.body}"></p>
+    <td><a th:if="${post.user.id} == ${#authentication.principal.id}" class="btn btn-success">Update</a></td>
+    <td><a th:if="${post.user.id} == ${#authentication.principal.id}" class="btn btn-warning">DELETE</a></td>
     </li>
 </ul>
     <div th:replace="partials/posts-partials.html :: foot"></div>
 </body>
 </html>
+<!--th:href="@{/posts/{id}/edit(id=${post.getId()})}"-->
+<!--th:href="@{/posts/{id}/delete(id=${post.getId()})}"-->
