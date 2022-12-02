@@ -4,6 +4,7 @@ import com.codeup.springblog.models.Post;
 import com.codeup.springblog.models.Users;
 import com.codeup.springblog.repositories.PostRepositories;
 import com.codeup.springblog.repositories.UserRepository;
+import com.codeup.springblog.services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +20,12 @@ public class PostController {
     private final PostRepositories postDao;
     private final UserRepository userDao;
 
-    public PostController(PostRepositories postDao, UserRepository userDao){
+    private final EmailService emailService;
+
+    public PostController(PostRepositories postDao, UserRepository userDao, EmailService emailService){
         this.postDao = postDao;
         this.userDao = userDao;
+        this.emailService = emailService;
     }
 
 
