@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <div th:replace="partials/posts-partials.html :: myheader('Show all posts')"></div>
+<head th:replace="~{partials/posts-partials.html :: myheader('Show all post')}">
+<title id="pageTitle"></title>
 </head>
 <body>
-<nav th:replace="partials/posts-partials.html :: mynav"></nav>
+<nav th:replace="~{partials/posts-partials.html :: mynav}"></nav>
 <div th:if="${post}">
     <h2 th:text="${post.title}">Post:</h2>
     <p th:text="${post.body}"></p>
@@ -12,6 +12,6 @@
 </div>
 <p th:unless="${post}">Could not find any posts</p>
 
-<div th:insert="partials/posts-partials.html :: foot"></div>
+<div th:insert="~{partials/posts-partials.html :: foot}"></div>
 </body>
 </html>

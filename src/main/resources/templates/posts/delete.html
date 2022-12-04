@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-  <div th:replace="partials/posts-partials.html :: myheader('Delete a post')"></div>
+<head th:replace="~{partials/posts-partials.html :: myheader('Delete A Post')}">
+<title id="pageTitle"></title>
 </head>
 <body>
-<nav th:insert="partials/posts-partials.html :: mynav"></nav>
+<nav th:insert="~{partials/posts-partials.html :: mynav}"></nav>
 <div th:if="post" class="inputs">
   <form action="/posts/delete" method="get">
     <label for="title">Post Title:</label>
@@ -12,6 +12,6 @@
     <button type="submit" id="deleteButton">Delete Post</button>
   </form>
 </div>
-<div th:insert="partials/posts-partials.html :: foot"></div>
+<div th:insert="~{partials/posts-partials.html :: foot}"></div>
 </body>
 </html>

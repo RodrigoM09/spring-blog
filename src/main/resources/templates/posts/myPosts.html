@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <div th:replace="partials/posts-partials.html :: myheader('My Posts')"></div>
+<head th:replace="~{partials/posts-partials.html :: myheader('Delete A Post')}">
+<title id="pageTitle"></title>
 </head>
 <body>
-    <nav th:replace="partials/posts-partials.html :: mynav"></nav>
+    <nav th:replace="~{partials/posts-partials.html :: mynav}"></nav>
 <h1>Your feed:</h1>
 <ul th:each="post : ${myPosts}">
     <li>
@@ -14,6 +14,6 @@
     <td><a th:href="@{/posts/{id}/edit(id=${post.getId()})}" class="btn btn-success">Update</a></td>
     <td><a th:href="@{/posts/{id}/delete(id=${post.getId()})}" class="btn btn-warning">DELETE</a></td>
 </ul>
-    <div th:replace="partials/posts-partials.html :: foot"></div>
+    <div th:replace="~{partials/posts-partials.html :: foot}"></div>
 </body>
 </html>

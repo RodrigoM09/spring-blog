@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <div th:replace="partials/posts-partials.html :: myheader('Posts')"></div>
+    <div th:replace="~{partials/posts-partials.html :: myheader('Posts')}"></div>
 </head>
 <body>
-    <nav th:replace="partials/posts-partials.html :: mynav"></nav>
+    <nav th:replace="~{partials/posts-partials.html :: mynav}"></nav>
 <h1>Your feed:</h1>
 <ul th:each="post : ${allPosts}">
     <li>
@@ -14,7 +14,7 @@
     <td><a th:if="${post.user.id} == ${#authentication.principal.id}" class="btn btn-warning">DELETE</a></td>
     </li>
 </ul>
-    <div th:replace="partials/posts-partials.html :: foot"></div>
+    <div th:replace="~{partials/posts-partials.html :: foot}"></div>
 </body>
 </html>
 <!--th:href="@{/posts/{id}/edit(id=${post.getId()})}"-->
